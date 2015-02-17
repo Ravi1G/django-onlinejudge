@@ -1,0 +1,40 @@
+{% extends "onlinejudge/base.html" %}
+{% load i18n %}
+
+
+
+
+{% block "content" %}
+{% if contests %}
+{% for contest , challenges in contests %}
+<h2><span class="clock {{ contest.status }}" title="{{ contest.start }} - {{ contest.finish }}"></span> {{ contest.name }}{% if contest.score.graded %} <small>({{ contest.score.score }}/{{ contest.score_max }})</small>{% endif %}{% if request.user.is_staff and contest.has_started %} <a href="{% url 'contest_report' contest.slug %}" role="button" class="btn btn-primary btn-xs" title="{% trans "Contest report" %}"><span class="glyphicon glyphicon-file" aria-hidden="true"></span></a>{% endif %}</h2>
+
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th class="result">{% trans "Result" %}</th>
+      <th>{% trans "Challenges" %}</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for challenge , submission , score in challenges %}
+    <tr>
+      <td class="result {{ submission.result.lower }}">
+      {% if contest.status == 'finished' and submission %}
+        {% if challenge.score_calculated.graded %}({{ challenge.score_calculated.score }}/{{ challenge.score }}){% endif %}
+      {% endif %}
+      </td>
+      {% if contest.status == 'finished' %}
+      <td><a href="{% url 'challenge_report' challenge.slug %}">{{ challenge.name }}</a></td>
+      {% else %}
+      <td><a href="{% url 'challenge' challenge.slug %}">{{ challenge.name }}</a></td>
+      {% endif %}
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endfor %}
+{% endif %}
+
+{% endblock "content" %}

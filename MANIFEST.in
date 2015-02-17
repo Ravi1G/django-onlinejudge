@@ -1,0 +1,6 @@
+include LICENSE
+include README.md
+recursive-include onlinejudge/locale *
+recursive-include onlinejudge/templates *
+recursive-include onlinejudge/static *
+recursive-exclude * *.pyc

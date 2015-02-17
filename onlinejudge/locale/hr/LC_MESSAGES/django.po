@@ -1,0 +1,304 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-12-24 14:05+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+
+#: .\admin.py:55
+msgid "Author"
+msgstr "Autor"
+
+#: .\admin.py:60 .\models.py:50
+msgid "Contest"
+msgstr "Ispit"
+
+#: .\forms.py:22 .\forms.py:38
+msgid "Save"
+msgstr "Spremi"
+
+#: .\forms.py:55
+msgid "Reset"
+msgstr "Resetiraj"
+
+#: .\forms.py:59
+msgid "Submit & Run"
+msgstr "Spremi i ispitaj"
+
+#: .\models.py:26
+msgid "Challenge"
+msgstr "Zadatak"
+
+#: .\models.py:27 .\templates\onlinejudge\index.html:15
+msgid "Challenges"
+msgstr "Zadaci"
+
+#: .\models.py:51
+msgid "Contests"
+msgstr "Ispiti"
+
+#: .\models.py:112
+msgid "Untested"
+msgstr "Neispitano"
+
+#: .\models.py:113
+msgid "Compile Error"
+msgstr "Greška u prevođenju"
+
+#: .\models.py:114 .\models.py:206 .\models.py:225
+msgid "Pending"
+msgstr "U obradi"
+
+#: .\models.py:115
+msgid "Tested"
+msgstr "Ispitano"
+
+#: .\models.py:118 .\models.py:226
+msgid "Accepted"
+msgstr "Ispravno"
+
+#: .\models.py:119 .\models.py:228
+msgid "Failed"
+msgstr "Neispravno"
+
+#: .\models.py:134 .\templates\onlinejudge\challenge.html:86
+msgid "Submission"
+msgstr "Odgovor"
+
+#: .\models.py:135
+msgid "Submissions"
+msgstr "Odgovori"
+
+#: .\models.py:157
+msgid "Result summary"
+msgstr "Rezultat"
+
+#: .\models.py:171
+msgid "Input - Output"
+msgstr "Ulaz - Izlaz"
+
+#: .\models.py:172
+msgid "Mandatory - Denied"
+msgstr "Obavezno - Zabranjeno"
+
+#: .\models.py:175
+msgid "Input or mandatory"
+msgstr "Ulaz ili obavezno"
+
+#: .\models.py:177
+#, fuzzy
+msgid "Output or deny"
+msgstr "Izlaz ili zabranjeno"
+
+#: .\models.py:207
+msgid "Okay"
+msgstr "U redu"
+
+#: .\models.py:208
+msgid "Restricted Function"
+msgstr "Korištenje nedozvoljene funkcije"
+
+#: .\models.py:209
+msgid "Memory Limit Exceed"
+msgstr "Prekoračenje memorijskog limita"
+
+#: .\models.py:210
+msgid "Output Limit Exceed"
+msgstr "Prekoračenje izlaznog limita"
+
+#: .\models.py:211
+msgid "Time Limit Exceed"
+msgstr "Prekoračenje vremenskog limita"
+
+#: .\models.py:212
+msgid "Run Time Error (SIGSEGV, SIGFPE, ...)"
+msgstr "Pogreška tijekom izvršavanja"
+
+#: .\models.py:213
+msgid "Abnormal Termination"
+msgstr "Abnormalan završetak"
+
+#: .\models.py:214
+msgid "Internal Error (of sandbox executor)"
+msgstr "Interna pogreška"
+
+#: .\models.py:215
+msgid "Bad Policy"
+msgstr "Pogreška u ograničenjima"
+
+#: .\models.py:216
+msgid "Reserved result type 0"
+msgstr "Rezervirani rezultat 0"
+
+#: .\models.py:217
+msgid "Reserved result type 1"
+msgstr "Rezervirani rezultat 0"
+
+#: .\models.py:218
+msgid "Reserved result type 2"
+msgstr "Rezervirani rezultat 2"
+
+#: .\models.py:219
+msgid "Reserved result type 3"
+msgstr "Rezervirani rezultat 3"
+
+#: .\models.py:220
+msgid "Reserved result type 4"
+msgstr "Rezervirani rezultat 4"
+
+#: .\models.py:221
+msgid "Reserved result type 5"
+msgstr "Rezervirani rezultat 5"
+
+#: .\models.py:222
+msgid "Exception"
+msgstr ""
+
+#: .\models.py:227
+msgid "Presentation error"
+msgstr "Ispravno"
+
+#: .\urls.py:5
+msgid "^$"
+msgstr ""
+
+#: .\urls.py:6
+msgid "^challenge/(?P<slug>[-\\w]+)/$"
+msgstr "^zadatak/(?P<slug>[-\\w]+)/$"
+
+#: .\urls.py:7
+msgid "^challenge/(?P<slug>[-\\w]+)/update/$"
+msgstr "^zadatak/(?P<slug>[-\\w]+)/update/$"
+
+#: .\urls.py:8
+msgid "^challenge/(?P<slug>[-\\w]+)/template/$"
+msgstr "^zadatak/(?P<slug>[-\\w]+)/template/$"
+
+#: .\urls.py:9
+msgid "^challenge/(?P<slug>[-\\w]+)/submission/test/$"
+msgstr "^zadatak/(?P<slug>[-\\w]+)/odgovor/test/$"
+
+#: .\urls.py:10
+msgid ""
+"^challenge/(?P<slug>[-\\w]+)/submission/results(?:/(?P<user_id>\\d+))?/$"
+msgstr "^zadatak/(?P<slug>[-\\w]+)/odgovor/rezultati(?:/(?P<user_id>\\d+))?/$"
+
+#: .\urls.py:11
+msgid "^contest/(?P<slug>[-\\w]+)/report(?:/(?P<user_id>\\d+))?/$"
+msgstr "^ispit/(?P<slug>[-\\w]+)/izvjestaj(?:/(?P<user_id>\\d+))?/$"
+
+#: .\utils.py:61
+msgid "Staff user required."
+msgstr "Potrebne administratorske ovlasti."
+
+#: .\utils.py:126
+#, python-format
+msgid "Mandatory `%s`"
+msgstr ""
+
+#: .\utils.py:126
+#, python-format
+msgid "Denied `%s`"
+msgstr ""
+
+#: .\views.py:127
+msgid "Please provide a comma-separated list of tags."
+msgstr "Unesite listu tagova odvojenih zarezom"
+
+#: .\views.py:151
+msgid "Contest is not active"
+msgstr "Ispit nije aktivan."
+
+#: .\views.py:279
+msgid "Contest is not finished."
+msgstr "Ispit je još uvijek u tijeku."
+
+#: .\views.py:281
+#, fuzzy, python-format
+msgid "User %(user)s has not participated in contest %(contest)s"
+msgstr "Korisnik %(name)s nije sudjelovao u ispitu %(contest)s"
+
+#: .\templates\onlinejudge\challenge.html:85
+msgid "Problem"
+msgstr "Zadatak"
+
+#: .\templates\onlinejudge\challenge.html:88
+msgid "Solution"
+msgstr "Rješenje"
+
+#: .\templates\onlinejudge\challenge.html:91
+msgid "Edit problem"
+msgstr "Uredi zadatak"
+
+#: .\templates\onlinejudge\challenge.html:92
+msgid "Edit template"
+msgstr "Uredi predložak"
+
+#: .\templates\onlinejudge\challenge.html:103
+msgid "Test Case"
+msgstr "Ispitni uzorak"
+
+#: .\templates\onlinejudge\challenge.html:105
+msgid "Input"
+msgstr "Ulaz"
+
+#: .\templates\onlinejudge\challenge.html:107
+msgid "Output"
+msgstr "Izlaz"
+
+#: .\templates\onlinejudge\challenge.html:112
+msgid "Tags"
+msgstr "Tagovi"
+
+#: .\templates\onlinejudge\contest_report.html:54
+msgid "Participants"
+msgstr "Sudionici"
+
+#: .\templates\onlinejudge\contest_report.html:64
+msgid "edit"
+msgstr "uredi"
+
+#: .\templates\onlinejudge\contest_report.html:84
+msgid "Comments"
+msgstr "Komentari"
+
+#: .\templates\onlinejudge\contest_report.html:91
+msgid "Edit"
+msgstr ""
+
+#: .\templates\onlinejudge\contest_report.html:111
+msgid "Add comment"
+msgstr "Dodaj komentar"
+
+#: .\templates\onlinejudge\index.html:14
+msgid "Result"
+msgstr "Rezultat"
+
+#: .\templates\onlinejudge\partials\submission_results.html:9
+msgid "Memory"
+msgstr "Memorija"
+
+#: .\templates\onlinejudge\partials\submission_results.html:10
+msgid "CPU time"
+msgstr "CPU"
+
+#: .\templates\onlinejudge\partials\submission_results.html:11
+msgid "Exit"
+msgstr "Izlaz"
+
+#~ msgid "Points"
+#~ msgstr "Bodovi"
