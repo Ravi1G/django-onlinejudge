@@ -12,7 +12,7 @@ CLASSIFIERS = [
     'License :: OSI Approved :: BSD License',
     'Operating System :: OS Independent',
     'Programming Language :: Python',
-    'Topic :: Education :: Computer Aided Instruction (CAI)'
+    'Topic :: Education :: Computer Aided Instruction (CAI)',
     'Topic :: Education :: Testing',
     'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
     'Topic :: Software Development',
