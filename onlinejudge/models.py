@@ -96,7 +96,6 @@ class Contest(models.Model):
             scores.append(self.get_participant_scores(participant))
         return scores
 
-
 def get_or_create_default_contest():
     """ Default contest is the first one created. If not create one."""
     try:
@@ -153,11 +152,26 @@ class Challenge(models.Model):
             return True
         return False
 
+    def get_submission_score_automate(self, participant):
+        for submission in self.submission_set.filter(challenge=self, author=participant):
+            count = 0
+            correct = 0
+            for test_result in submission.test_results.all():
+                if test_result.test_case.is_public:
+                    continue
+                if test_result.result == 'OK':
+                    correct +=1
+                count +=1
+            if count != 0:
+                submission.score_percentage = int(round(100.0 * correct / count ))
+                submission.save()
+
     def get_submission_score(self, participant):
         score = {"score": 0,
                  "graded": False}
         try:
             sub = Submission.objects.get(author=participant, challenge=self)
+            self.get_submission_score_automate(participant=participant)
         except ObjectDoesNotExist:
             sub = None
             # if there is no submission score is 0
@@ -192,6 +206,8 @@ class Submission(models.Model):
     #language = models.ForeignKey()
     is_public = models.BooleanField(default=False)
 
+    def __unicode__(self):
+        return unicode(self.author) + " " + unicode(self.challenge.name)
     def save(self, *args, **kwargs):
         if not kwargs.pop('skip_modified', False):
             self.modified = timezone.now()

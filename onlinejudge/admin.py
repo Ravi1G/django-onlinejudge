@@ -7,6 +7,8 @@ from django.forms import ModelForm
 from django_select2.fields import ModelSelect2MultipleField
 from django.utils.encoding import smart_unicode
 from .models import Challenge, Contest, Submission, TestCase
+#REMOVE THIS
+from .models import Challenge, Contest, Submission, TestCase, TestResult
 
 
 class TestCaseInline(TabularInline):
@@ -68,6 +70,8 @@ class TestCaseAdmin(admin.ModelAdmin):
     list_display = ('challenge', 'hint_short', 'is_public', 'input',
                     'output', 'cpu_time_limit',
                     'wallclock_time_limit', 'memory_limit')
+#remove this
+admin.site.register(TestResult)
 
 admin.site.register(Challenge, ChallengeAdmin)
 admin.site.register(Contest, ContestAdmin)
