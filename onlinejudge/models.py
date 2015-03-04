@@ -96,6 +96,11 @@ class Contest(models.Model):
             scores.append(self.get_participant_scores(participant))
         return scores
 
+    def set_participants_scores(self, grading_type):
+        for participant in self.participants.all():
+            for ch in self.challenge_set.all():
+                ch.set_submission_score(participant, grading_type)
+
 def get_or_create_default_contest():
     """ Default contest is the first one created. If not create one."""
     try:
@@ -152,8 +157,10 @@ class Challenge(models.Model):
             return True
         return False
 
-    def get_submission_score_automate(self, participant):
+    def set_submission_score(self, participant, grading_type):
         for submission in self.submission_set.filter(challenge=self, author=participant):
+            if submission.score_percentage != -1 and grading_type == 'ungraded':
+                continue
             count = 0
             correct = 0
             for test_result in submission.test_results.all():
@@ -164,14 +171,13 @@ class Challenge(models.Model):
                 count +=1
             if count != 0:
                 submission.score_percentage = int(round(100.0 * correct / count ))
-                submission.save()
+            submission.save()
 
     def get_submission_score(self, participant):
         score = {"score": 0,
                  "graded": False}
         try:
             sub = Submission.objects.get(author=participant, challenge=self)
-            self.get_submission_score_automate(participant=participant)
         except ObjectDoesNotExist:
             sub = None
             # if there is no submission score is 0
@@ -345,3 +351,4 @@ class TestResult(models.Model):
         if self.status=="PD":
             self.result = "PD"
         super(TestResult, self).save(*args, **kwargs)
+

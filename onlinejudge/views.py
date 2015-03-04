@@ -330,6 +330,19 @@ def contest_report(request, slug):
                                },
                                RequestContext(request),
                               )
+#@require_POST
+@staff_member_required
+def contest_grade(request, slug):
+    contest = get_object_or_404(Contest, slug=slug)
+    #return render_to_response('onlinejudge/contest_grade.html', RequestContext(request))
+    if request.method == 'POST':
+        type = str(request.POST.get("type", 'ungraded'))
+        print type
+        contest.set_participants_scores(type)
+        return HttpResponseRedirect(reverse('contest_report', args=[slug]),
+                               RequestContext(request),
+                              )
+    return render_to_response("onlinejudge/contest_grade.html", RequestContext(request))
 
 
 #TODO: temporary solution for grading
