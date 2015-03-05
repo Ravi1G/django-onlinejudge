@@ -1,9 +1,9 @@
-from django.test import TestCase
+from django.test import TestCase as DjangoTestCase
 from onlinejudge.models import Contest, Challenge, Submission, TestCase, TestResult
 from django.contrib.auth.models import User, Group, AnonymousUser, Permission
 
 
-class TestModel(TestCase):
+class TestModel(DjangoTestCase):
     def setUp(self):
         challenge = Challenge.objects.create(name="faktorijel", slug="fakt", score=0)
         submission = Submission.objects.create(challenge=challenge)
