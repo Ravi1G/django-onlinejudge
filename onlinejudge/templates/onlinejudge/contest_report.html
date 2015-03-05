@@ -16,9 +16,9 @@
 <form  clss="form-inline" method="POST" action="{% url 'grade_contest' contest.slug %}">
   {% csrf_token %}
   <select name="grading_type" class="selectpicker">
-    <option value="ungraded">Neocjenjeni</option>
-    <option value="ungraded_and_autograded">Neocjenjeni i automatizirano ocjenjeni</option>
-    <option value="all">Svi</option>
+    <option value="ungraded">{% trans "Ungraded" %}</option>
+    <option value="ungraded_and_autograded">{% trans "Ungraded and automatically graded" %}</option>
+    <option value="all">{% trans "All" %}</option>
   </select>
   <button class="btn btn-primary" type="submit">{% trans "Grade" %}</button>
 </form>
