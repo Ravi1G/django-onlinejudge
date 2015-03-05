@@ -161,6 +161,8 @@ class Challenge(models.Model):
         for submission in self.submission_set.filter(challenge=self, author=participant):
             if submission.score_percentage != -1 and grading_type == 'ungraded':
                 continue
+            if grading_type != 'all' and submission.status == 'HT':
+                continue
             count = 0
             correct = 0
             for test_result in submission.test_results.all():
@@ -171,6 +173,7 @@ class Challenge(models.Model):
                 count +=1
             if count != 0:
                 submission.score_percentage = int(round(100.0 * correct / count ))
+            submission.status = 'TS'
             submission.save()
 
     def get_submission_score(self, participant):
@@ -195,6 +198,7 @@ class Submission(models.Model):
                 ("CE", _('Compile Error')),
                 ("PD", _('Pending')),
                 ("TS", _('Tested')),
+                ("HT", _('Hand Tested')),
                )
     RESULTS = STATUSES + (
                           ("OK", _('Accepted')),

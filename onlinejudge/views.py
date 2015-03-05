@@ -303,7 +303,7 @@ def submission_results(request, user, slug):
             }
            for tr in test_results]
     if (len(test_results)>0 and len(test_results.filter(status="PD"))==0 and
-            submission.status!="TS"):
+            submission.status not in ["TS", "HT"]):
         submission.status = "TS"  # Tested
         submission.save()
     return render_to_response(
@@ -330,22 +330,17 @@ def contest_report(request, slug):
                                },
                                RequestContext(request),
                               )
-#@require_POST
+@require_POST
 @staff_member_required
-def contest_grade(request, slug):
+def grade_contest(request, slug):
     contest = get_object_or_404(Contest, slug=slug)
-    #return render_to_response('onlinejudge/contest_grade.html', RequestContext(request))
-    if request.method == 'POST':
-        type = str(request.POST.get("type", 'ungraded'))
-        print type
-        contest.set_participants_scores(type)
-        return HttpResponseRedirect(reverse('contest_report', args=[slug]),
-                               RequestContext(request),
-                              )
-    return render_to_response("onlinejudge/contest_grade.html", RequestContext(request))
+    grading_type = str(request.POST.get("grading_type", 'ungraded'))
+    contest.set_participants_scores(grading_type)
+    return HttpResponseRedirect(reverse('contest_report', args=[slug]),
+                           RequestContext(request),
+                          )
 
 
-#TODO: temporary solution for grading
 @require_POST
 @staff_member_required
 def grade_submission(request, submission_id):
@@ -353,6 +348,8 @@ def grade_submission(request, submission_id):
     score_percentage = int(request.POST.get("score_percentage", -1))
     if score_percentage>=-1 and score_percentage<=100:
         submission.score_percentage = score_percentage
+        #HAND TESTED
+        submission.status = "HT" 
         submission.save(skip_modified=True)
     return HttpResponseRedirect(
                             build_url("challenge_report",
